@@ -18,15 +18,14 @@ public class Posicion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int empaes;
+    private int empates;
     private int ganados;
-    private int partidos;
-    private int golesFavor;
-    private int golesContra;
+    private int golesfavor;
+    private int golescontra;
     private int puntos;
 
     @ManyToOne
-    @JoinColumn(name = "codigoEquipo")
+    @JoinColumn(name = "codigoequipo")
     private Equipo equipo;
     
 }
