@@ -1,11 +1,13 @@
 package hn.unah.lenguajes.repo.modelos;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -18,6 +20,7 @@ public class Equipo {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @Column(name="codigoEquipo")
    private int codigoEquipo;
 
    private String nombre;
@@ -26,7 +29,9 @@ public class Equipo {
 
    private double defensa;
 
-   @OneToOne(mappedBy = "codigoEquipo", cascade = CascadeType.ALL)
+   @OneToOne
+   @JsonIgnore
+   @JoinColumn(name = "codigoEquipo", referencedColumnName="codigoEquipo")
    private Equipo equipo;
  
 }
